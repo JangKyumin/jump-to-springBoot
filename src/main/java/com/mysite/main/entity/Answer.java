@@ -1,4 +1,4 @@
-package com.mysite.main.model;
+package com.mysite.main.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

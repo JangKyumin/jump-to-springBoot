@@ -1,4 +1,4 @@
-package com.mysite.main;
+package com.mysite.main.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

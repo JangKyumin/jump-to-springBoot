@@ -1,4 +1,4 @@
-package com.mysite.main.entity;
+package com.mysite.main;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

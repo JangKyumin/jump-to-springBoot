@@ -1,6 +1,6 @@
-package com.mysite.main.repository;
+package com.mysite.main.answer;
 
-import com.mysite.main.entity.Answer;
+import com.mysite.main.answer.Answer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

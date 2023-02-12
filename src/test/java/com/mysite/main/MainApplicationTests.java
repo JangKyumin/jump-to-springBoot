@@ -1,9 +1,9 @@
 package com.mysite.main;
 
-import com.mysite.main.entity.Answer;
-import com.mysite.main.entity.Question;
-import com.mysite.main.repository.AnswerRepository;
-import com.mysite.main.repository.QuestionRepository;
+import com.mysite.main.answer.Answer;
+import com.mysite.main.question.Question;
+import com.mysite.main.answer.AnswerRepository;
+import com.mysite.main.question.QuestionRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

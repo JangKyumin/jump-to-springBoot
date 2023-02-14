@@ -8,6 +8,6 @@ public class MainContoller {
 
     @GetMapping("/")
     public String index() {
-        return "test 입니다";
+        return "redirect:/question/list";
     }
 }

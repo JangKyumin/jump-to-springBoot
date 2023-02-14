@@ -10,10 +10,10 @@ import java.util.List;
 @RestController
 public class QuestionController {
 
-    private final QuestionRepository questionRepository;
+    private final QuestionService questionService;
 
     @GetMapping("/question/list")
     public List<Question> list() {
-        return this.questionRepository.findAll();
+        return this.questionService.getList();
     }
 }

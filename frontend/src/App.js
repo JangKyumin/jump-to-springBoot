@@ -1,43 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
-import axios from "axios";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import BoardPage from "./components/BoardPage";
+import BoardDetailPage from "./components/BoardDetailPage";
 
 function App() {
-  const [questionList, setQuestionList] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("/question/list")
-      .then((response) => {
-        setQuestionList(response.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>제목</th>
-            <th>작성일시</th>
-          </tr>
-        </thead>
-        <tbody>
-          {questionList &&
-            questionList.map((question, index) => (
-              <tr key={question.id}>
-                <td>
-                  <a href={"/question/detail/" + question.id}>
-                    {question.subject}
-                  </a>
-                </td>
-                <td>{question.createDate}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route exact path="/" element={<BoardPage />} />
+          <Route exact path="/question/detail" element={<BoardDetailPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

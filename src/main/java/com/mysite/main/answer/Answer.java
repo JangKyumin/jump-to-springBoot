@@ -1,5 +1,6 @@
 package com.mysite.main.answer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mysite.main.question.Question;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -22,5 +23,6 @@ public class Answer {
 
     @ManyToOne
     @JoinColumn(name = "question_id")
+    @JsonIgnore // 순환 참조 관계 문제로 추가
     private Question question;
 }

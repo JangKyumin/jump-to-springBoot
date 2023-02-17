@@ -28,7 +28,7 @@ function BoardPage() {
             questionList.map((question, index) => (
               <tr key={question.id}>
                 <td>
-                  <Link to="/question/detail" state={question.id}>
+                  <Link to="/detail" state={question.id}>
                     {question.subject}
                   </Link>
                 </td>

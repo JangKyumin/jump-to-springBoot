@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Container from "react-bootstrap/Container";
+import Table from "react-bootstrap/Table";
 
 function BoardPage() {
   const [questionList, setQuestionList] = useState([]);
@@ -15,10 +17,11 @@ function BoardPage() {
   }, []);
 
   return (
-    <div>
-      <table>
+    <Container>
+      <Table striped>
         <thead>
           <tr>
+            <th>번호</th>
             <th>제목</th>
             <th>작성일시</th>
           </tr>
@@ -27,6 +30,7 @@ function BoardPage() {
           {questionList &&
             questionList.map((question, index) => (
               <tr key={question.id}>
+                <td>{index}</td>
                 <td>
                   <Link to="/detail" state={question.id}>
                     {question.subject}
@@ -36,8 +40,8 @@ function BoardPage() {
               </tr>
             ))}
         </tbody>
-      </table>
-    </div>
+      </Table>
+    </Container>
   );
 }
 

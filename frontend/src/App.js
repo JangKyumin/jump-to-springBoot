@@ -1,3 +1,5 @@
+import "bootstrap/dist/css/bootstrap.css";
+
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import BoardPage from "./components/BoardPage";

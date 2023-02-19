@@ -3,6 +3,9 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
+import Badge from "react-bootstrap/Badge";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 function BoardDetailPage() {
   const location = useLocation();
@@ -41,9 +44,9 @@ function BoardDetailPage() {
         <Card.Body>
           <Card.Text>{question.content}</Card.Text>
           <div class="d-flex justify-content-end">
-            <div class="badge bg-light text-dark p-2 text-start">
-              <div>{question.createDate}</div>
-            </div>
+            <Badge bg="light" text="dark">
+              {question.createDate}
+            </Badge>
           </div>
         </Card.Body>
       </Card>
@@ -59,31 +62,31 @@ function BoardDetailPage() {
             <Card.Body>
               <Card.Text>{answer.content}</Card.Text>
               <div class="d-flex justify-content-end">
-                <div class="badge bg-light text-dark p-2 text-start">
-                  <div>{question.createDate}</div>
-                </div>
+                <Badge bg="light" text="dark">
+                  {question.createDate}
+                </Badge>
               </div>
             </Card.Body>
           </Card>
         ))}
 
-      <form method="post">
-        <textarea
+      <Form method="post">
+        <Form.Control
+          as="textarea"
+          rows={15}
           name="content"
           id="content"
-          rows="15"
           value={content}
           onChange={handleChange}
-          style={{ width: "100%" }}
         />
-        <button
-          type="button"
+        <Button
+          variant="secondary"
           onClick={onSubmitHandler}
-          style={{ margintop: "10px" }}
+          style={{ marginTop: 10 }}
         >
-          답변등록
-        </button>
-      </form>
+          {"답변등록"}
+        </Button>
+      </Form>
     </Container>
   );
 }

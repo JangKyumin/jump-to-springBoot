@@ -1,10 +1,9 @@
 package com.mysite.main.question;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +22,14 @@ public class QuestionController {
     @GetMapping(value = "/detail/{id}")
     public Question detail(@PathVariable("id") Integer id) {
         return this.questionService.getQuestion(id);
+    }
+
+    @PostMapping("/create")
+    public Object questionCreate(@RequestBody @Valid QuestionForm questionForm, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return bindingResult.getAllErrors();
+        }
+        this.questionService.create(questionForm.getSubject(), questionForm.getContent());
+        return "success";
     }
 }

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Container from "react-bootstrap/Container";
-import Table from "react-bootstrap/Table";
+import { Container, Table, Button } from "react-bootstrap";
 
 function BoardPage() {
   const [questionList, setQuestionList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -32,15 +32,31 @@ function BoardPage() {
               <tr key={question.id}>
                 <td>{index}</td>
                 <td>
-                  <Link to="/detail" state={question.id}>
+                  <a
+                    href={""}
+                    onClick={() => {
+                      navigate("/detail", {
+                        state: { questionId: question.id },
+                      });
+                    }}
+                  >
                     {question.subject}
-                  </Link>
+                  </a>
                 </td>
                 <td>{question.createDate}</td>
               </tr>
             ))}
         </tbody>
       </Table>
+      <Button
+        variant="primary"
+        style={{ marginTop: 10 }}
+        onClick={() => {
+          navigate("/create");
+        }}
+      >
+        질문 등록하기
+      </Button>
     </Container>
   );
 }

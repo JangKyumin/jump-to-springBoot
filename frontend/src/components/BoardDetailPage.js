@@ -29,7 +29,6 @@ function BoardDetailPage() {
         content: content,
       })
       .then((response) => {
-        console.log(response.data);
         if (response.data.content != null) {
           setQuestion(response.data);
           setErrors("");

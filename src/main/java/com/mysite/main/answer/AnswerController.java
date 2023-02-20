@@ -2,10 +2,10 @@ package com.mysite.main.answer;
 
 import com.mysite.main.question.Question;
 import com.mysite.main.question.QuestionService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
 
 @RequestMapping("/answer")
 @RequiredArgsConstructor
@@ -16,9 +16,12 @@ public class AnswerController {
     private final AnswerService answerService;
 
     @PostMapping("/create/{id}")
-    public Question createAnswer(@PathVariable("id") Integer id, @RequestBody HashMap<String, Object> param) {
+    public Object createAnswer(@PathVariable("id") Integer id, @RequestBody @Valid AnswerForm answerForm, BindingResult bindingResult) {
         Question question = this.questionService.getQuestion(id);
-        this.answerService.create(question, param.get("content").toString());
+        if (bindingResult.hasErrors()) {
+            return bindingResult.getAllErrors();
+        }
+        this.answerService.create(question, answerForm.getContent());
         return question;
     }
 }

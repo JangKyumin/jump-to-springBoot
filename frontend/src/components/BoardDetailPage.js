@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { Container, Card, Badge, Form, Button } from "react-bootstrap";
+import { Container, Card, Badge, Form, Button, Alert } from "react-bootstrap";
 
 function BoardDetailPage() {
   const location = useLocation();
   const [question, setQuestion] = useState("");
   const [content, setContent] = useState("");
+  const [errors, setErrors] = useState("");
 
   useEffect(() => {
     axios
@@ -28,7 +29,13 @@ function BoardDetailPage() {
         content: content,
       })
       .then((response) => {
-        setQuestion(response.data);
+        console.log(response.data);
+        if (response.data.content != null) {
+          setQuestion(response.data);
+          setErrors("");
+        } else {
+          setErrors(response.data);
+        }
       })
       .catch((error) => console.log(error));
   }
@@ -67,6 +74,14 @@ function BoardDetailPage() {
         ))}
 
       <Form method="post">
+        {errors ? (
+          <Alert key="danger" variant="danger">
+            {errors &&
+              errors.map((error, index) => (
+                <div key={index}>{error.defaultMessage}</div>
+              ))}
+          </Alert>
+        ) : null}
         <Form.Control
           as="textarea"
           rows={15}

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { Container, Card, Badge, Form, Button, Alert } from "react-bootstrap";
+import { Container, Card, Badge, Form, Button } from "react-bootstrap";
+import ErrorAlert from "./ErrorAlert";
 
 function BoardDetailPage() {
   const location = useLocation();
@@ -73,14 +74,7 @@ function BoardDetailPage() {
         ))}
 
       <Form method="post">
-        {errors ? (
-          <Alert key="danger" variant="danger">
-            {errors &&
-              errors.map((error, index) => (
-                <div key={index}>{error.defaultMessage}</div>
-              ))}
-          </Alert>
-        ) : null}
+        <ErrorAlert errors={errors} />
         <Form.Control
           as="textarea"
           rows={15}

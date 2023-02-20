@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Container, Form, Button, Alert } from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
+import ErrorAlert from "./ErrorAlert";
 
 function BoardCreateForm() {
   const navigate = useNavigate();
@@ -38,14 +39,7 @@ function BoardCreateForm() {
     <Container>
       <h5 className="my-3 border-bottom pb-2">질문등록</h5>
       <Form method="post">
-        {errors ? (
-          <Alert key="danger" variant="danger">
-            {errors &&
-              errors.map((error, index) => (
-                <div key={index}>{error.defaultMessage}</div>
-              ))}
-          </Alert>
-        ) : null}
+        <ErrorAlert errors={errors} />
 
         <Form.Group className="mb-3">
           <Form.Label>제목</Form.Label>

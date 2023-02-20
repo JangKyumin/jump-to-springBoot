@@ -18,8 +18,8 @@ function BoardPage() {
 
   return (
     <Container>
-      <Table striped>
-        <thead>
+      <Table striped bordered hover className="my-3">
+        <thead className="table-dark">
           <tr>
             <th>번호</th>
             <th>제목</th>

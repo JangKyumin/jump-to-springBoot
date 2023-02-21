@@ -2,12 +2,22 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import emogi from "../emoji.png";
 
 function NavBarComponent() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">Positivie Life</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <img
+            src={emogi}
+            width="30"
+            height="30"
+            alt=""
+            style={{ margin: 3 }}
+          />
+          Positivie Life
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

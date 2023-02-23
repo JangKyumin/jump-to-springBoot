@@ -2,10 +2,9 @@ package com.mysite.main.question;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @RequestMapping("/question")
@@ -15,8 +14,8 @@ public class QuestionController {
     private final QuestionService questionService;
 
     @GetMapping("/list")
-    public List<Question> list() {
-        return this.questionService.getList();
+    public Page<Question> list(@RequestParam(value = "page", defaultValue = "0") int page) {
+        return this.questionService.getList(page);
     }
 
     @GetMapping(value = "/detail/{id}")

@@ -9,9 +9,10 @@ function BoardPage() {
 
   useEffect(() => {
     axios
-      .get("/question/list")
+      .get("/question/list?page=1")
       .then((response) => {
-        setQuestionList(response.data);
+        console.log(response.data);
+        setQuestionList(response.data.content);
       })
       .catch((error) => console.log(error));
   }, []);

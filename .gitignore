@@ -28,3 +28,4 @@ build
 local.mv.db
 local.trace.db
 bin
+.vscode

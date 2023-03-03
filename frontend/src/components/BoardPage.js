@@ -53,12 +53,14 @@ function BoardPage() {
       {!paging.empty && (
         <div>
           <Pagination className="justify-content-center">
+            <Pagination.Prev></Pagination.Prev>
             {paging.content &&
               paging.content.map((question, index) => (
                 <Pagination.Item key={index} active={index === 2}>
                   {index}
                 </Pagination.Item>
               ))}
+            <Pagination.Next></Pagination.Next>
           </Pagination>
         </div>
       )}
